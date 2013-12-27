@@ -24,7 +24,7 @@
 		<g:javascript>
 			$(document).ready(function() {
 			    $('#showmenu').click(function() {
-			            $('.menu').slideToggle("fast");
+			            $('#menu').slideToggle("fast");
 			    });
 			});
 		
@@ -35,30 +35,15 @@
 	
 		<div id="status">
 			<h1>Administration</h1>
-			<ul>
-				<li id = "showmenu" style = "cursor: pointer;">Account</li>
-			
-			
-			</ul>
-			<div class="menu" style="display: none;">
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
+			<div id = "showmenu" style = "cursor: pointer;">Account</div>
+			<div id = "menu" style="display: none; padding-left:10px;">
+				<ul>
+					<li><g:link controller="account" action="list">Accounts List</g:link></li>
+					<li><g:link controller="account" action="create">Create Account</g:link></li>
+					<li><g:link controller="account" action="edit">Update Account</g:link></li>
+					<li><g:link controller="account" action="delete">Delete Account</g:link></li>
+				</ul>
 			</div>
-			<h1>Installed Plugins</h1>
-			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
-			</ul>
 		</div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>

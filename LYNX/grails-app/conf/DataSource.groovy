@@ -14,7 +14,7 @@ hibernate {
 environments {
     development {
         dataSource {
-            //dbCreate = "validate" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "validate" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost/lynx_test?useUnicode=yes&characterEncoding=UTF-8"
 			username = "root"
 			password = "root"

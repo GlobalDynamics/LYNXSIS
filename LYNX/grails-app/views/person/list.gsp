@@ -1,5 +1,5 @@
 
-<%@ page import="net.celestialdynamics.lynx.test.Person" %>
+<%@ page import="net.celestialdynamics.lynx.modules.Person" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,17 +24,17 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="firstName" title="${message(code: 'person.firstName.label', default: 'First Name')}" />
+						<th><g:message code="person.account.label" default="Account" /></th>
+					
+						<th><g:message code="person.address.label" default="Address" /></th>
 					
 						<g:sortableColumn property="lastName" title="${message(code: 'person.lastName.label', default: 'Last Name')}" />
 					
+						<g:sortableColumn property="firstName" title="${message(code: 'person.firstName.label', default: 'First Name')}" />
+					
 						<g:sortableColumn property="middleName" title="${message(code: 'person.middleName.label', default: 'Middle Name')}" />
 					
-						<g:sortableColumn property="section" title="${message(code: 'person.section.label', default: 'Section')}" />
-					
-						<g:sortableColumn property="studentID" title="${message(code: 'person.studentID.label', default: 'Student ID')}" />
-					
-						<g:sortableColumn property="year" title="${message(code: 'person.year.label', default: 'Year')}" />
+						<g:sortableColumn property="suffix" title="${message(code: 'person.suffix.label', default: 'Suffix')}" />
 					
 					</tr>
 				</thead>
@@ -42,17 +42,17 @@
 				<g:each in="${personInstanceList}" status="i" var="personInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${personInstance.id}">${fieldValue(bean: personInstance, field: "firstName")}</g:link></td>
+						<td><g:link action="show" id="${personInstance.id}">${fieldValue(bean: personInstance, field: "account")}</g:link></td>
+					
+						<td>${fieldValue(bean: personInstance, field: "address")}</td>
 					
 						<td>${fieldValue(bean: personInstance, field: "lastName")}</td>
 					
+						<td>${fieldValue(bean: personInstance, field: "firstName")}</td>
+					
 						<td>${fieldValue(bean: personInstance, field: "middleName")}</td>
 					
-						<td>${fieldValue(bean: personInstance, field: "section")}</td>
-					
-						<td>${fieldValue(bean: personInstance, field: "studentID")}</td>
-					
-						<td>${fieldValue(bean: personInstance, field: "year")}</td>
+						<td>${fieldValue(bean: personInstance, field: "suffix")}</td>
 					
 					</tr>
 				</g:each>
