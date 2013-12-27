@@ -16,6 +16,7 @@ class AccountController {
     }
 
     def create() {
+		encodePassword()
         [accountInstance: new Account(params)]
     }
 
@@ -99,4 +100,15 @@ class AccountController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def encodePassword(String password)
+	{
+		int iterations = grailsApplication.config.grails.security.iterations
+		String encodedPassword = password
+		for(int i = 0; i<=iterations;i++)
+		{
+			encodedPassword = encodedPassword.encodeAsMD5();
+		}
+		print encodedPassword
+	}
 }

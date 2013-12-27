@@ -89,3 +89,4 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+grails.security.iterations = 2000
