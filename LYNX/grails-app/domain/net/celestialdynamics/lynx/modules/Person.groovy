@@ -13,16 +13,17 @@ class Person {
 	String ethinicity
 	
 	static mapping = {
+		version false;
 		table : 'person'
-		id column : 'personID'
-		account column : 'accountID'
-		address column : 'addressID'
+		id column : 'personID', sqlType: "int"
+		account column : 'accountID', sqlType: "int"
+		address column : 'addressID', sqlType: "int"
 		lastName column : 'lastName'
 		firstName column : 'firstName'
 		middleName column : 'middleName'
 		suffix column : 'suffix'
 		gender column : 'gender'
-		birthDate column : 'birthDate'
+		birthDate column : 'birthDate', sqlType : 'date'
 		language column : 'language'
 		ethinicity column : 'ethinicity'
 	}

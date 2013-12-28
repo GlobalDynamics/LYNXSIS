@@ -7,11 +7,13 @@ class Account {
 	Date lastLogin
 	
 	static mapping = {
-		table 'accounts'
-		id column: 'accountID'
+		version false
+		table 'account'
+		id column: 'accountID' , sqlType: "int"
 		username column: 'username'
 		hash column: 'hash'
 		salt column: 'salt'
+		lastLogin column: 'lastLogin', sqlType : 'date'
 	}
 
     static constraints = {

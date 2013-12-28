@@ -15,7 +15,7 @@ environments {
     development {
         dataSource {
             dbCreate = "validate" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost/lynx_test?useUnicode=yes&characterEncoding=UTF-8"
+            url = "jdbc:mysql://127.0.0.1:3306/lynx_test?useUnicode=yes&characterEncoding=UTF-8"
 			username = "root"
 			password = "root"
         }
