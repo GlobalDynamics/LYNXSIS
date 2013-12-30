@@ -1,3 +1,6 @@
+/spring-security-core.properties
+/spring-security-core_de.properties
+/spring-security-core_fr.properties
 /grails
 /org
 /ApplicationResources$_run_closure1.class
@@ -34,6 +37,8 @@
 /DefaultCacheConfig$_run_closure1_closure2.class
 /DefaultCacheConfig$_run_closure1_closure3.class
 /DefaultCacheConfig.class
+/DefaultSecurityConfig$_run_closure1.class
+/DefaultSecurityConfig.class
 /DefaultWebXmlConfig$_run_closure1.class
 /DefaultWebXmlConfig.class
 /JQueryConfig$_run_closure1.class
