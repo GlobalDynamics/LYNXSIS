@@ -1,15 +1,13 @@
 CREATE TABLE IF NOT EXISTS account
 (
         accountID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        personID INT NOT NULL,
-        usergroupID INT NOT NULL,
-        username VARCHAR(20),
-        hash VARCHAR(500),
-        salt VARCHAR(50),
+        username VARCHAR(20) NOT NULL,
+        hash VARCHAR(500) NOT NULL,
+        salt VARCHAR(50) NOT NULL,
         lastLogin DATE NULL
 );
 
-CREATE TABLE address
+CREATE TABLE IF NOT EXISTS address
 (
 	addressID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	street VARCHAR(100) NOT NULL,
@@ -24,11 +22,11 @@ CREATE TABLE address
 	email VARCHAR(50) NULL
 );
 
-CREATE TABLE person
+CREATE TABLE IF NOT EXISTS person
 (
 	personID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	accountID INT NOT NULL  REFERENCES account(accountID),
-	addressID INT NOT NULL  REFERENCES address(addressID),
+	accountID INT NOT NULL,
+	addressID INT NOT NULL,
 	lastName VARCHAR(50) NOT NULL,
 	firstName VARCHAR(50) NOT NULL,
 	middleName VARCHAR(50) NOT NULL,
@@ -40,3 +38,18 @@ CREATE TABLE person
 	FOREIGN KEY (accountID) REFERENCES account(accountID),
 	FOREIGN KEY	(addressID) REFERENCES address(addressID)
 );
+
+CREATE TABLE IF NOT EXISTS usergroup
+(
+        usergroupID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(100) NOT NULL,
+        defaultGroup VARCHAR(1) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS permissions
+	(
+		permissionID INT  NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		moduleID INT NOT NULL,
+		usergroupID INT NOT NULL,
+		accessType INT
+	)

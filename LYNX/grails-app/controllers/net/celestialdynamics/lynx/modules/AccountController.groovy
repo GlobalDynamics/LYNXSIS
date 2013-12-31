@@ -1,11 +1,15 @@
 package net.celestialdynamics.lynx.modules
 
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
 import org.springframework.dao.DataIntegrityViolationException
 
 class AccountController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	static Random random = new Random();
+	static String complexity = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"
 
     def index() {
        // redirect(action: "list", params: params)
@@ -23,16 +27,38 @@ class AccountController {
     }
 
     def save() {
-		String salt = org.apache.commons.lang.RandomStringUtils.random(randInt(20,50), true, true)
-		String hash  = encodePassword(params.password, salt)
-        def accountInstance = new Account(username: params.username, hash: hash, salt : salt)
-        if (!accountInstance.save(flush: true)) {
-            render(view: "create", model: [accountInstance: accountInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.created.message', args: [message(code: 'account.label', default: 'Account'), accountInstance.id])
-        redirect(action: "show", id: accountInstance.id)
+		String password = params.password
+		String passwordConfirm = params.passwordConfirm
+		String username = params.username
+		if(password && passwordConfirm && username)
+		{
+			if(complexityTest(password,passwordConfirm))
+			{
+				String salt = org.apache.commons.lang.RandomStringUtils.random(randInt(20,50), true, true)
+				String hash  = encodePassword(password, salt)
+				def accountInstance = new Account(username: username, hash: hash, salt : salt)
+				if (!accountInstance.save(flush: true)) {
+					render(view: "create", model: [accountInstance: accountInstance])
+					return
+				}
+				flash.message = message(code: 'default.created.message', args: [message(code: 'account.label', default: 'Account'), accountInstance.id])
+				redirect(action: "show", id: accountInstance.id)
+			}
+			else
+			{
+				redirect(action: "create")
+				return
+			}
+		}
+		else
+		{
+			flash.message = "You must fill out all fields"
+			redirect(action: "create")
+			return
+		}
+		
+		
+		
     }
 
     def show(Long id) {
@@ -125,7 +151,30 @@ class AccountController {
 			int randomNum = random.nextInt((max - min) + 1) + min;
 		
 			return randomNum;
+	}
+	
+	 def complexityTest(String password, String passwordConfirm) {
+		if (password && passwordConfirm) {
+			if (password.equals(passwordConfirm)) {
+				Pattern pattern = Pattern.compile(complexity);
+				Matcher matcher = pattern.matcher(password);
+				if (matcher.matches()) {
+					return true
+				}
+
+			}
+			else
+			{
+				flash.message = "Passwords do not match"
+				return false
+			}
+			flash.message = "Password is not complex enough. Password must be between 6 AND 20 characters"
+			return false;
 		}
+		flash.message = "You must enter and confirm your passoword"
+		return false
+		
+	}
 	
 	def login = {
 		
@@ -143,6 +192,12 @@ class AccountController {
 				String hash = encodePassword(password,account.salt)
 				if(hash.equals(account.hash))
 				{
+					account.lastLogin = new Date()
+					if (!account.save(flush: true)) {
+						flash.message = "There was an error logging in"
+						redirect(controller:"account", action:"login")
+						return
+					}
 					session.user = account
 					flash.clear()
 					redirect(controller:"account", action:"index")
