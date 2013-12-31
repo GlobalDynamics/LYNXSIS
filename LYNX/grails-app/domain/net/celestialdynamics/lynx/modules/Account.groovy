@@ -20,5 +20,6 @@ class Account {
 		username(blank:false,mazSize:20)
 		hash(blank:false,mazSize:500)
 		salt(blank:false,mazSize:50)
+		lastLogin(nullable:true)
     }
 }

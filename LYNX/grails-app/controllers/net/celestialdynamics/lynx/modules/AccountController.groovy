@@ -5,10 +5,13 @@ import org.springframework.dao.DataIntegrityViolationException
 class AccountController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	static Random random = new Random();
 
     def index() {
-        redirect(action: "list", params: params)
+       // redirect(action: "list", params: params)
     }
+	
+	
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -16,12 +19,13 @@ class AccountController {
     }
 
     def create() {
-		encodePassword()
         [accountInstance: new Account(params)]
     }
 
     def save() {
-        def accountInstance = new Account(params)
+		String salt = org.apache.commons.lang.RandomStringUtils.random(randInt(20,50), true, true)
+		String hash  = encodePassword(params.password, salt)
+        def accountInstance = new Account(username: params.username, hash: hash, salt : salt)
         if (!accountInstance.save(flush: true)) {
             render(view: "create", model: [accountInstance: accountInstance])
             return
@@ -101,14 +105,74 @@ class AccountController {
         }
     }
 	
-	def encodePassword(String password)
+	def encodePassword(String password, String hash)
 	{
 		int iterations = grailsApplication.config.grails.security.iterations
-		String encodedPassword = password
+		String encodedPassword = password + hash
 		for(int i = 0; i<=iterations;i++)
 		{
-			encodedPassword = encodedPassword.encodeAsMD5();
+			encodedPassword = (encodedPassword + hash).toString().encodeAsMD5();
 		}
-		print encodedPassword
+		return encodedPassword
+	}
+	
+	def randInt(int min, int max) {
+		
+			// Usually this can be a field rather than a method variable
+		
+			// nextInt is normally exclusive of the top value,
+			// so add 1 to make it inclusive
+			int randomNum = random.nextInt((max - min) + 1) + min;
+		
+			return randomNum;
+		}
+	
+	def login = {
+		
+	}
+	
+	def authenticate = {
+		
+		def accounts = Account.findAllByUsername(params.Username)
+		if(accounts.size() == 1)
+		{
+			Account account = accounts.first()
+			String password = params.password
+			if(password != null && password != "" && password.length() >0)
+			{
+				String hash = encodePassword(password,account.salt)
+				if(hash.equals(account.hash))
+				{
+					session.user = account
+					flash.clear()
+					redirect(controller:"account", action:"index")
+				}
+				else
+				{
+					flash.message = "The password entered is incorrect"
+					println "error 1"
+					redirect(controller:"account", action:"login")
+				}
+			}
+			else
+			{
+				flash.message = "You must enter a password"
+				println "error 2"
+				redirect(controller:"account", action:"login")
+			}
+		}
+		else if(accounts.size() == 0)
+		{
+			flash.message = "You must enter a valid username"
+			println "error 3"
+			redirect(controller:"account", action:"login")
+		}
+		else if(accounts.size() >0)
+		{
+			flash.message = "error"
+			redirect(controller:"account", action:"login")
+		}
+		
+		
 	}
 }

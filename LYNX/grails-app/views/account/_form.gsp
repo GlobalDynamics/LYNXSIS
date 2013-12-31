@@ -10,27 +10,25 @@
 	<g:textField name="username" required="" value="${accountInstance?.username}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'hash', 'error')} required">
-	<label for="hash">
-		<g:message code="account.hash.label" default="Hash" />
+<div class="fieldcontain required">
+	<label for="password">
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="hash" required="" value="${accountInstance?.hash}"/>
+	<g:textField name="password" required="" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'salt', 'error')} required">
-	<label for="salt">
-		<g:message code="account.salt.label" default="Salt" />
+<div class="fieldcontain required">
+	<label for="passwordConfirm">
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="salt" required="" value="${accountInstance?.salt}"/>
+	<g:textField name="passwordConfirm" required="" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'lastLogin', 'error')} required">
-	<label for="lastLogin">
-		<g:message code="account.lastLogin.label" default="Last Login" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="lastLogin" precision="day"  value="${accountInstance?.lastLogin}"  />
-</div>
+<%--<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'lastLogin', 'error')} required">--%>
+<%--	<label for="lastLogin">--%>
+<%--		<g:message code="account.lastLogin.label" default="Last Login" />--%>
+<%--		<span class="required-indicator">*</span>--%>
+<%--	</label>--%>
+<%--	<g:datePicker name="lastLogin" precision="day"  value="${accountInstance?.lastLogin}"  />--%>
+<%--</div>--%>
 
