@@ -23,8 +23,11 @@
 		
 		<g:javascript>
 			$(document).ready(function() {
-			    $('#showmenu').click(function() {
-			            $('#menu').slideToggle("fast");
+			    $('#accountShow').click(function() {
+			            $('#accountMenu').slideToggle("fast");
+			    });
+			    $('#personShow').click(function() {
+			            $('#personMenu').slideToggle("fast");
 			    });
 			});
 		
@@ -35,8 +38,8 @@
 		<g:link controller="account" action="logout">Logout</g:link>
 		<div id="status">
 			<h1>Administration</h1>
-			<div id = "showmenu" style = "cursor: pointer;">Account</div>
-			<div id = "menu" style="display: none; padding-left:10px;">
+			<div id = "accountShow" style = "cursor: pointer;">Account</div>
+			<div id = "accountMenu" style="display: none; padding-left:10px;">
 				<ul>
 					<li><g:link controller="account" action="list">Accounts List</g:link></li>
 					<li><g:link controller="account" action="create">Create Account</g:link></li>
@@ -44,8 +47,29 @@
 					<li><g:link controller="account" action="delete">Delete Account</g:link></li>
 				</ul>
 			</div>
+			
+			<div id = "personShow" style = "cursor: pointer;">People</div>
+			<div id = "personMenu" style="display: none; padding-left:10px;">
+				<ul>
+					<li><g:link controller="person" action="list">People List</g:link></li>
+					<li><g:link controller="person" action="create">Create Person</g:link></li>
+					<li><g:link controller="person" action="edit">Update Person</g:link></li>
+					<li><g:link controller="person" action="delete">Delete Person</g:link></li>
+				</ul>
+				
+<%--				<ul>--%>
+<%--					<li><g:link controller="account" action="list">Address List</g:link></li>--%>
+<%--					<li><g:link controller="account" action="create">Create Address</g:link></li>--%>
+<%--					<li><g:link controller="account" action="edit">Update Address</g:link></li>--%>
+<%--					<li><g:link controller="account" action="delete">Delete Address</g:link></li>--%>
+<%--				</ul>--%>
+			</div>
+			
+			
 		</div>
+		<div id="page-body">
 		<g:layoutBody/>
+		</div>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript library="application"/>
