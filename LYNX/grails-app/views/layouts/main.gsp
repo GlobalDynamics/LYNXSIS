@@ -32,7 +32,7 @@
 		</g:javascript>
 	</head>
 	<body>
-	
+		<g:link controller="account" action="logout">Logout</g:link>
 		<div id="status">
 			<h1>Administration</h1>
 			<div id = "showmenu" style = "cursor: pointer;">Account</div>

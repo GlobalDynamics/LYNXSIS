@@ -1,4 +1,5 @@
 dataSource {
+	logSql = true
     pooled = true
     driverClassName = "com.mysql.jdbc.Driver"
 	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"

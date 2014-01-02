@@ -1,10 +1,19 @@
+CREATE TABLE IF NOT EXISTS usergroup
+(
+        usergroupID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(100) NOT NULL,
+        defaultGroup VARCHAR(1) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS account
 (
         accountID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        usergroupID INT NOT NULL,
         username VARCHAR(20) NOT NULL,
         hash VARCHAR(500) NOT NULL,
         salt VARCHAR(50) NOT NULL,
-        lastLogin DATE NULL
+        lastLogin DATE NULL,
+        FOREIGN KEY (usergroupID) REFERENCES usergroup(usergroupID)
 );
 
 CREATE TABLE IF NOT EXISTS address
@@ -39,17 +48,11 @@ CREATE TABLE IF NOT EXISTS person
 	FOREIGN KEY	(addressID) REFERENCES address(addressID)
 );
 
-CREATE TABLE IF NOT EXISTS usergroup
-(
-        usergroupID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(100) NOT NULL,
-        defaultGroup VARCHAR(1) NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS module
 (
 	moduleID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	name VARCHAR(100) NOT NULL
+	name VARCHAR(100) NOT NULL,
+	action VARCHAR(50) NOT NULL
 );
 	
 CREATE TABLE IF NOT EXISTS permission
@@ -67,4 +70,11 @@ CREATE TABLE IF NOT EXISTS usergroup_permission
 	permissionID INT NOT NULL,
 	FOREIGN KEY (usergroupID) REFERENCES usergroup(usergroupID),
 	FOREIGN KEY (permissionID) REFERENCES permission(permissionID)
+);
+
+CREATE TABLE IF NOT EXISTS student
+(
+	studentID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	personID INT NOT NULL,
+	FOREIGN KEY (personID) REFERENCES person(personID)
 );

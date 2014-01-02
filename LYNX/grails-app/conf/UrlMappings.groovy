@@ -9,5 +9,6 @@ class UrlMappings {
 
 		"/"(controller:'account',action:'index')
 		"500"(view:'/error')
+		"/error"(view:"errorPage")
 	}
 }

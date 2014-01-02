@@ -3,7 +3,9 @@ package net.celestialdynamics.lynx.modules
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-import net.celestialdynamics.lynx.modules.Account;
+import net.celestialdynamics.lynx.Roles.Permission
+import net.celestialdynamics.lynx.Roles.Usergroup
+import net.celestialdynamics.lynx.Roles.UsergroupPermission
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -14,7 +16,7 @@ class AccountController {
 	static String complexity = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"
 
     def index() {
-       // redirect(action: "list", params: params)
+//       redirect(controller: "account", action: "index")
     }
 	
 	
@@ -32,13 +34,14 @@ class AccountController {
 		String password = params.password
 		String passwordConfirm = params.passwordConfirm
 		String username = params.username
+		String usergroup = params.usergroup.id
 		if(password && passwordConfirm && username)
 		{
 			if(complexityTest(password,passwordConfirm))
 			{
 				String salt = org.apache.commons.lang.RandomStringUtils.random(randInt(20,50), true, true)
 				String hash  = encodePassword(password, salt)
-				def accountInstance = new Account(username: username, hash: hash, salt : salt)
+				def accountInstance = new Account(username: username, hash: hash, salt : salt, usergroup: Usergroup.get(usergroup.toLong()))
 				if (!accountInstance.save(flush: true)) {
 					render(view: "create", model: [accountInstance: accountInstance])
 					return
@@ -181,6 +184,12 @@ class AccountController {
 	def login = {
 		
 	}
+	def logout = {
+		session.user = null
+		session.permissions = null
+		session.invalidate()
+		redirect(controller:"account", action:"login")
+	}
 	
 	def authenticate = {
 		
@@ -200,7 +209,9 @@ class AccountController {
 						redirect(controller:"account", action:"login")
 						return
 					}
+					def permissions = Permission.getAll(UsergroupPermission.findAllByUsergroup(account.usergroup)*.id)
 					session.user = account
+					session.permissions = permissions
 					flash.clear()
 					redirect(controller:"account", action:"index")
 				}
