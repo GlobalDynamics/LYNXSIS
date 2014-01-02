@@ -29,15 +29,15 @@ class Person {
 	}
 
     static constraints = {
-		account(blank:false)
-		address(blank:false)
-		lastName(blank:false,mazSize:50)
-		firstName(blank:false,mazSize:50)
-		middleName(blank:false,mazSize:50)
-		suffix(blank:false,mazSize:4)
-		gender(blank:false,mazSize:1)
-		birthDate(blank:false)
-		language(blank:false,mazSize:15)
-		ethinicity(blank:false,mazSize:20)
+		account(blank:false,nullable:false)
+		address(blank:false,nullable:false)
+		lastName(blank:false,nullable:false,mazSize:50)
+		firstName(blank:false,nullable:false,mazSize:50)
+		middleName(blank:false,nullable:false,mazSize:50)
+		suffix(blank:false,nullable:false,mazSize:4)
+		gender(blank:false,nullable:false,mazSize:1)
+		birthDate(blank:false,nullable:false)
+		language(blank:false,nullable:false,mazSize:15)
+		ethinicity(blank:false,nullable:false,mazSize:20)
     }
 }

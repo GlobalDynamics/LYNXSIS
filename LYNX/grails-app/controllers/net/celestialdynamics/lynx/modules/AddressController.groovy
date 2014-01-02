@@ -1,5 +1,7 @@
 package net.celestialdynamics.lynx.modules
 
+import net.celestialdynamics.lynx.modules.Address;
+
 import org.springframework.dao.DataIntegrityViolationException
 
 class AddressController {

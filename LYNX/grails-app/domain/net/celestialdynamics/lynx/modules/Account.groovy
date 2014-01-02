@@ -9,7 +9,7 @@ class Account {
 	static mapping = {
 		version false
 		table 'account'
-		id column: 'accountID' , sqlType: "int"
+		id column: 'accountID' , sqlType: 'int'
 		username column: 'username'
 		hash column: 'hash'
 		salt column: 'salt'
@@ -17,9 +17,9 @@ class Account {
 	}
 
     static constraints = {
-		username(blank:false,mazSize:20)
-		hash(blank:false,mazSize:500)
-		salt(blank:false,mazSize:50)
+		username(blank:false,nullable:false,mazSize:20)
+		hash(blank:false,nullable:false,mazSize:500)
+		salt(blank:false,nullable:false,mazSize:50)
 		lastLogin(nullable:true)
     }
 }

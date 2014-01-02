@@ -3,6 +3,8 @@ package net.celestialdynamics.lynx.modules
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
+import net.celestialdynamics.lynx.modules.Account;
+
 import org.springframework.dao.DataIntegrityViolationException
 
 class AccountController {

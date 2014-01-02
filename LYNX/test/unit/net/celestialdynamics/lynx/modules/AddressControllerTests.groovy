@@ -2,7 +2,10 @@ package net.celestialdynamics.lynx.modules
 
 
 
+import net.celestialdynamics.lynx.modules.Address;
+
 import org.junit.*
+
 import grails.test.mixin.*
 
 @TestFor(AddressController)

@@ -1,5 +1,7 @@
 package net.celestialdynamics.lynx.modules
 
+import net.celestialdynamics.lynx.modules.Person;
+
 import org.springframework.dao.DataIntegrityViolationException
 
 class PersonController {

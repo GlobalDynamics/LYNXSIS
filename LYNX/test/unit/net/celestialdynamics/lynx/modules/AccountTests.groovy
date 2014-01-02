@@ -3,6 +3,8 @@ package net.celestialdynamics.lynx.modules
 
 
 import grails.test.mixin.*
+import net.celestialdynamics.lynx.modules.Account;
+
 import org.junit.*
 
 /**

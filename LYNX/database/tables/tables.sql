@@ -46,10 +46,25 @@ CREATE TABLE IF NOT EXISTS usergroup
         defaultGroup VARCHAR(1) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS permissions
-	(
-		permissionID INT  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-		moduleID INT NOT NULL,
-		usergroupID INT NOT NULL,
-		accessType INT
-	)
+CREATE TABLE IF NOT EXISTS module
+(
+	moduleID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(100) NOT NULL
+);
+	
+CREATE TABLE IF NOT EXISTS permission
+(
+	permissionID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	moduleID INT NOT NULL,
+	accessType INT,
+	FOREIGN KEY (moduleID) REFERENCES module(moduleID)
+);
+
+CREATE TABLE IF NOT EXISTS usergroup_permission
+(
+	usergroup_permissionID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	usergroupID INT NOT NULL,
+	permissionID INT NOT NULL,
+	FOREIGN KEY (usergroupID) REFERENCES usergroup(usergroupID),
+	FOREIGN KEY (permissionID) REFERENCES permission(permissionID)
+);

@@ -2,7 +2,10 @@ package net.celestialdynamics.lynx.modules
 
 
 
+import net.celestialdynamics.lynx.modules.Account;
+
 import org.junit.*
+
 import grails.test.mixin.*
 
 @TestFor(AccountController)

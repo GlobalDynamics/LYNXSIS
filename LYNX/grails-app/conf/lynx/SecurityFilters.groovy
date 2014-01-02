@@ -2,6 +2,7 @@ package lynx
 
 import net.celestialdynamics.lynx.modules.Account
 
+
 class SecurityFilters {
 
     def filters = {

@@ -1,17 +1,17 @@
-package net.celestialdynamics.lynx.modules
+package net.celestialdynamics.lynx.base
 
 
 
 import grails.test.mixin.*
-import net.celestialdynamics.lynx.modules.Address;
+import net.celestialdynamics.lynx.Roles.Permission;
 
 import org.junit.*
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Address)
-class AddressTests {
+@TestFor(Permission)
+class PermissionTests {
 
     void testSomething() {
        fail "Implement me"
