@@ -100,7 +100,6 @@ ul,ol {
 	list-style: none inside none;
 	white-space: nowrap;
 	letter-spacing: -5px;
-	background: url(/ti/header_menu_background_last.png) no-repeat right;
 	padding-right: 17px;
 }
 
@@ -325,7 +324,7 @@ div.main p {
 	text-align: justify;
 }
 
-div.main .section-plug p {
+div.main p {
 	text-align: left;
 	margin: 1em 0;
 	padding: 0;

@@ -1,6 +1,6 @@
 #status {
-/* 	background: url(../images/header_background.png) repeat-x top left; */
-	background-color: #404040;
+	background: url("../images/smooth.png") repeat-x scroll 0 0 #1d1d1d;
+/* 	background-color: #404040; */
 	border: .2em solid #fff;
 	margin: 1em 2em 1em;
 	padding: 1em;

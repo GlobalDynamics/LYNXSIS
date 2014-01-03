@@ -7,7 +7,7 @@
 		<g:message code="account.usergroup.label" default="Usergroup" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="usergroup" name="usergroup.id" from="${net.celestialdynamics.lynx.Roles.Usergroup.list()}" optionKey="id" required="" value="${accountInstance?.usergroup?.id}" class="many-to-one"/>
+	<g:select id="usergroup" name="usergroup.id" optionValue ="name" from="${net.celestialdynamics.lynx.Roles.Usergroup.list()}" optionKey="id" required="" value="${accountInstance?.usergroup?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'username', 'error')} required">
