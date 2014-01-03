@@ -23,6 +23,7 @@ class AccountController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+		def person
         [accountInstanceList: Account.list(params), accountInstanceTotal: Account.count()]
     }
 
@@ -210,8 +211,23 @@ class AccountController {
 						return
 					}
 					def permissions = Permission.getAll(UsergroupPermission.findAllByUsergroup(account.usergroup)*.id)
+					def people = Person.findAllByAccount(account)
+					def person
+					if(people.size() == 1)
+					{
+						person = people.first()
+					}
+					else if(people.size() == 0)
+					{
+						person = null
+					}
+					else
+					{
+						person = people.first()
+					}
 					session.user = account
 					session.permissions = permissions
+					session.person = person
 					flash.clear()
 					redirect(controller:"account", action:"index")
 				}

@@ -93,7 +93,13 @@
 		</div>
 		
 		<div id="session">
-			<span>Logged in as <a title="User" href="#">Administrator</a> - <a title="Logout" href="#">Logout</a>?</span>
+			<span>Logged in as <a title="User" href="#">
+			<g:if test="${ session.person }">
+    			${ session.person?.firstName + " " + session.person?.lastName }
+			</g:if>
+			<g:else>
+    			${ session.user?.username }
+			</g:else></a> - <g:link controller="account" action="logout">Logout</g:link></span>
 		</div>
 		
 		<div class="clear"></div>

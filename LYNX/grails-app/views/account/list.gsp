@@ -24,10 +24,11 @@
 					<tr>
 					
 						<g:sortableColumn property="username" title="${message(code: 'account.username.label', default: 'Username')}" />
+						<g:sortableColumn property="person" title="Associated Person" />
 					
-						<g:sortableColumn property="hash" title="${message(code: 'account.hash.label', default: 'Hash')}" />
-					
-						<g:sortableColumn property="salt" title="${message(code: 'account.salt.label', default: 'Salt')}" />
+<%--						<g:sortableColumn property="hash" title="${message(code: 'account.hash.label', default: 'Hash')}" />--%>
+<%--					--%>
+<%--						<g:sortableColumn property="salt" title="${message(code: 'account.salt.label', default: 'Salt')}" />--%>
 					
 						<g:sortableColumn property="lastLogin" title="${message(code: 'account.lastLogin.label', default: 'Last Login')}" />
 					
