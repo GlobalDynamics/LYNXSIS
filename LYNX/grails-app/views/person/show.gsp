@@ -27,7 +27,7 @@
 				<li class="fieldcontain">
 					<span id="account-label" class="property-label"><g:message code="person.account.label" default="Account" /></span>
 					
-						<span class="property-value" aria-labelledby="account-label"><g:link controller="account" action="show" id="${personInstance?.account?.id}">${personInstance?.account?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="account-label"><g:link controller="account" action="show" id="${personInstance?.account?.id}">${personInstance?.account?.username.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

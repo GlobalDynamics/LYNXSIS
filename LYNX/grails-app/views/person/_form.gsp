@@ -9,7 +9,8 @@
 <%--	</label>--%>
 <%--	<g:select id="account" name="account.id" from="${net.celestialdynamics.lynx.modules.Account.list()}" optionKey="id" required="" value="${personInstance?.account?.id}" class="many-to-one"/>--%>
 <%--</div>--%>
-
+<fieldset style = "width:800px;">
+<legend>Address Information</legend>
 	<div class="fieldcontain ${hasErrors(bean: addressInstance, field: 'street', 'error')} required">
 		<label for="street">
 			<g:message code="address.street.label" default="Street" />
@@ -98,7 +99,12 @@
 	</label>
 	<g:textField maxlength = "50" class="input bigfield" name="email" required="" value="${addressInstance?.email}"/>
 </div>
+<div class = "clear"></div>
+</fieldset>
 
+<div class="entry">
+<div class="sep"></div>
+</div>
 
 <%--<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'address', 'error')} required">--%>
 <%--	<label for="address">--%>
@@ -108,6 +114,8 @@
 <%--	<g:select id="address" name="address.id" from="${net.celestialdynamics.lynx.modules.Address.list()}" optionKey="id" required="" value="${personInstance?.address?.id}" class="many-to-one"/>--%>
 <%--</div>--%>
 
+<fieldset style = "width:800px;">
+<legend>Person Information</legend>
 <div class="input_field ${hasErrors(bean: personInstance, field: 'lastName', 'error')} required">
 	<label for="lastName">
 		<g:message code="person.lastName.label" default="Last Name" />
@@ -171,7 +179,13 @@
 	</label>
 	<g:textField class="input bigfield" name="ethinicity" required="" value="${personInstance?.ethinicity}"/>
 </div>
+</fieldset>
+<div class="entry">
+<div class="sep"></div>
+</div>
 
+<fieldset style = "width:800px;">
+<legend>Account Information</legend>
 <div class="fieldcontain ${hasErrors(bean: personInstance, field: 'usergroup', 'error')} required">
 	<label for="account">
 		<g:message code="account.usergroup.label" default="Usergroup" />
@@ -190,6 +204,7 @@
 
 <div class="fieldcontain required">
 	<label for="password">
+		Password
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="password" required="" />
@@ -197,8 +212,10 @@
 
 <div class="fieldcontain required">
 	<label for="passwordConfirm">
+		Confirm Password
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="passwordConfirm" required="" />
 </div>
-
+<div class = "clear"></div>
+</fieldset>

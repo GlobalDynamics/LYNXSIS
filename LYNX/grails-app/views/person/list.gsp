@@ -23,7 +23,8 @@
 			<table>
 				<thead>
 					<tr>
-					
+						<th><g:message code="person.id.label" default="ID" /></th>
+						
 						<th><g:message code="person.account.label" default="Account" /></th>
 					
 						<th><g:message code="person.address.label" default="Address" /></th>
@@ -42,9 +43,11 @@
 				<g:each in="${personInstanceList}" status="i" var="personInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${personInstance.id}">${fieldValue(bean: personInstance, field: "account")}</g:link></td>
+						<td><g:link action="show" id="${personInstance.id}">${fieldValue(bean: personInstance, field: "id")}</g:link></td>
+						
+						<td><g:link controller = "account" action="show" id="${personInstance.account.id}">${fieldValue(bean: personInstance, field: "account.username")}</g:link></td>
 					
-						<td>${fieldValue(bean: personInstance, field: "address")}</td>
+						<td><g:link controller = "address" action="show" id="${personInstance.address.id}">${fieldValue(bean: personInstance, field: "address")}</g:link></td>
 					
 						<td>${fieldValue(bean: personInstance, field: "lastName")}</td>
 					

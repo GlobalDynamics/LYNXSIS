@@ -41,4 +41,9 @@ class Address {
 		country(blank:false,nullable:false,mazSize:20)
 		email(blank:false,nullable:false,mazSize:50)
     }
+	
+	String toString()
+	{
+		return houseNumber + " " + street + " " + direction
+	}
 }

@@ -24,7 +24,7 @@ class AccountController {
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 		def person
-        [accountInstanceList: Account.list(params), accountInstanceTotal: Account.count()]
+        [accountInstanceList: Person.list(params), accountInstanceTotal: Person.count()]
     }
 
     def create() {

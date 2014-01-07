@@ -29,6 +29,9 @@ class PersonController {
 
     def save() {
 		def addressInstance = new Address(params)
+		if (!addressInstance.save(flush: true)) {
+			addressInstance.save(flush: true)
+		}
 		addressInstance.save(flush: true)
 		params.address = addressInstance
 		
@@ -190,4 +193,6 @@ class PersonController {
 		return false
 		
 	}
+	 
+
 }

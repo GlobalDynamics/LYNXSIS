@@ -235,9 +235,12 @@ button:hover, .button:hover{
 	background: #FFFFFF;
 	border: 1px solid #DDDDDD;
 	border-radius: 3px;
-	font-size: 11px;
+	font-size: 8pt;
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
-	padding: 5px 3px;
+	padding: 1px 3px;
+	width: 400px;
+	
+	
 }
 #main form input:focus, #main form select:focus, #main form textarea:focus{	border: 1px solid #b3b3b3;}
 
@@ -307,8 +310,11 @@ table tr:hover td{
 table .chb{ 
 	width: 20px; 
 }
-table a {
+table th a {
 	color: #DACDCD;
+}
+table td a {
+	color: #0000EE;
 }
 
 .table-icon { padding: 1px 8px; margin-right: 5px; }
@@ -372,7 +378,7 @@ table a {
 .cancel{ background: #F3F3F3 url(../images/dash/i_delete.png) no-repeat 4px center;	padding-left: 25px;}
 .sep{ border-bottom: 1px dashed #DDDDDD; margin: 10px 0;}
 
-.clear{ clear: both; }
+.clear{ clear: both; padding-top:5px; padding-bottom:5px;}
 
 .left{ 	float: left; }
 .right{ float: right; }
