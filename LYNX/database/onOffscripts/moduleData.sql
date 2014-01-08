@@ -15,3 +15,12 @@ INSERT INTO module (name, action) VALUES('person', 'create');
 INSERT INTO module (name, action) VALUES('person', 'edit');
 INSERT INTO module (name, action) VALUES('person', 'update');
 INSERT INTO module (name, action) VALUES('person', 'delete');
+
+INSERT INTO module (name, action) VALUES('usergroup', 'index');
+INSERT INTO module (name, action) VALUES('usergroup', 'list');
+INSERT INTO module (name, action) VALUES('usergroup', 'show');
+INSERT INTO module (name, action) VALUES('usergroup', 'save');
+INSERT INTO module (name, action) VALUES('usergroup', 'create');
+INSERT INTO module (name, action) VALUES('usergroup', 'edit');
+INSERT INTO module (name, action) VALUES('usergroup', 'update');
+INSERT INTO module (name, action) VALUES('usergroup', 'delete');

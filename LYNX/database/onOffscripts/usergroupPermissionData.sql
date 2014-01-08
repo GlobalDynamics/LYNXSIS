@@ -15,3 +15,12 @@ INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,13);
 INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,14);
 INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,15);
 INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,16);
+
+INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,17);
+INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,18);
+INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,19);
+INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,20);
+INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,21);
+INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,22);
+INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,23);
+INSERT INTO usergroup_permission (usergroupID, permissionID) VALUES(1,24);

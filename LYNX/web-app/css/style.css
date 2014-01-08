@@ -317,6 +317,7 @@ table td a {
 	color: #0000EE;
 }
 
+
 .table-icon { padding: 1px 8px; margin-right: 5px; }
 .edit.table-icon { background: url(../images/dash/i_edit.png) no-repeat; }
 .delete.table-icon { background: url(../images/dash/i_delete.png) no-repeat; }
@@ -386,3 +387,7 @@ table td a {
 .align-left{ text-align: left; }
 .align-right{ text-align: right; }
 .align-center{ text-align: center; }
+
+.checkBox {
+	width:10px;
+}

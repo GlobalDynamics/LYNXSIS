@@ -15,3 +15,12 @@ INSERT INTO permission (moduleID, accessType) VALUES('13', '1');
 INSERT INTO permission (moduleID, accessType) VALUES('14', '1');
 INSERT INTO permission (moduleID, accessType) VALUES('15', '1');
 INSERT INTO permission (moduleID, accessType) VALUES('16', '1');
+
+INSERT INTO permission (moduleID, accessType) VALUES('17', '1');
+INSERT INTO permission (moduleID, accessType) VALUES('18', '1');
+INSERT INTO permission (moduleID, accessType) VALUES('19', '1');
+INSERT INTO permission (moduleID, accessType) VALUES('20', '1');
+INSERT INTO permission (moduleID, accessType) VALUES('21', '1');
+INSERT INTO permission (moduleID, accessType) VALUES('22', '1');
+INSERT INTO permission (moduleID, accessType) VALUES('23', '1');
+INSERT INTO permission (moduleID, accessType) VALUES('24', '1');

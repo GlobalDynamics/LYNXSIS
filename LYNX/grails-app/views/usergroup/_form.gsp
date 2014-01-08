@@ -17,4 +17,28 @@
 	</label>
 	<g:textField name="defaultGroup" required="" value="${usergroupInstance?.defaultGroup}"/>
 </div>
+<p>Permissions</p>
+<table>
+					<thead>
+						<tr>
+							<th style="width: 60px;" scope="col">Module</th>
+							<th style="width: 60px;" scope="col">View</th>
+							<th style="width: 60px;" scope="col">Update</th>
+							<th style="width: 60px;" scope="col">Create</th>
+							<th style="width: 60px;" scope="col">Delete</th>
+						</tr>
+					</thead>
+						
+					<tbody>
+						<g:each var="module" in="${moduleList}">
+						    <tr>
+						    	<td>${ module.name }</td>
+						    	<td><g:checkBox style = "width:20px;" name="${ module.name }View" value="${false}" /></td>
+						    	<td><g:checkBox style = "width:20px;" name="${ module.name }Update" value="${false}" /></td>
+						    	<td><g:checkBox style = "width:20px;" name="${ module.name }Create" value="${false}" /></td>
+						    	<td><g:checkBox style = "width:20px;" name="${ module.name }Delete" value="${false}" /></td>
+						    </tr>
+						</g:each>
+					</tbody>
+				</table>
 
